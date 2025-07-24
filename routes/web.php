@@ -60,3 +60,21 @@ Route::middleware(['auth', 'is_admin'])
 
 
     });
+
+
+    Route::get('/test', function () {
+    return 'PHP and Laravel are working!';
+});
+
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
+
+Route::get('/db-test', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'Database connected successfully!';
+    } catch (\Exception $e) {
+        return 'Database connection failed: ' . $e->getMessage();
+    }
+});
